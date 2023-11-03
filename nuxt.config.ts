@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         Lato: true,
       },
     ],
+    "nuxt-svgo",
   ],
   runtimeConfig: {
     public: {

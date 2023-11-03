@@ -40,6 +40,7 @@ const handleClick = () => {
       </span>
       <span :class="$style.type">Tasks</span>
     </label>
+    <svgo-star />
   </div>
 </template>
 
