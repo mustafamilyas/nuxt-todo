@@ -807,7 +807,7 @@
     which "^3.0.1"
     ws "^8.14.2"
 
-"@nuxt/kit@3.8.0", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.7.4":
+"@nuxt/kit@3.8.0", "@nuxt/kit@^3.5.0", "@nuxt/kit@^3.6.5", "@nuxt/kit@^3.7.4":
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.8.0.tgz#cd8a32981c2fe151e0acde7145f7e4ca38920f24"
   integrity sha512-oIthQxeMIVs4ESVP5FqLYn8tj0S1sLd+eYreh+dNYgnJ2pTi7+THR12ONBNHjk668jqEe7ErUJ8UlGwqBzgezg==
@@ -916,6 +916,15 @@
     vite-node "^0.33.0"
     vite-plugin-checker "^0.6.2"
     vue-bundle-renderer "^2.0.0"
+
+"@nuxtjs/google-fonts@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-fonts/-/google-fonts-3.0.2.tgz#baecde4a4bbd4e9ff5724d83d427c56b1ffc5127"
+  integrity sha512-9DY0NcBnx/I6+3Lr7NeB64k5A7GbqCN1pqVgU9ld00NEXSpDUht2+lG8mcC5UnmpTi8KCdCJckDbD/bqW3ncYg==
+  dependencies:
+    "@nuxt/kit" "^3.6.5"
+    google-fonts-helper "^3.3.1"
+    pathe "^1.1.1"
 
 "@parcel/watcher-android-arm64@2.3.0":
   version "2.3.0"
@@ -2117,7 +2126,7 @@ debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.4:
   dependencies:
     ms "2.1.2"
 
-deepmerge@^4.2.2:
+deepmerge@^4.2.2, deepmerge@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
   integrity sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==
@@ -2725,6 +2734,16 @@ globby@^13.2.2:
     ignore "^5.2.4"
     merge2 "^1.4.1"
     slash "^4.0.0"
+
+google-fonts-helper@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/google-fonts-helper/-/google-fonts-helper-3.3.1.tgz#d4404fbd3aca2ed7aa5686efa446bd7e4e99dd36"
+  integrity sha512-zMycq4nUUaplGe7pzCOGBC52LB3VpwxS9temmCx1EucEaBdBEpG5MeQlJhtRu63gKI1hb/l+yHkasQtee59sFA==
+  dependencies:
+    deepmerge "^4.3.1"
+    hookable "^5.5.3"
+    ofetch "^1.1.1"
+    ufo "^1.1.2"
 
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.11"
@@ -4750,6 +4769,11 @@ source-map@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.4.tgz#a9bbe705c9d8846f4e08ff6765acf0f1b0898656"
   integrity sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==
+
+spacetime@^7.4.8:
+  version "7.4.8"
+  resolved "https://registry.yarnpkg.com/spacetime/-/spacetime-7.4.8.tgz#10a904e639d3c4e2549dda761f08ceed12adfb35"
+  integrity sha512-kQxyLfY1g+JH5+YwdYqsD4LtLxdcbkjlLnTCI9AaPUt3Ul8mr4BAQZk9gxza8eF9hlME55lIAgx49ShqBPsx/A==
 
 spdx-correct@^3.0.0:
   version "3.2.0"
