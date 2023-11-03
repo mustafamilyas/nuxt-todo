@@ -7,4 +7,8 @@ export default defineNuxtConfig({
       apiBe: "",
     },
   },
+  typescript: {
+    strict: true,
+    typeCheck: true,
+  },
 });
