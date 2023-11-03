@@ -35,7 +35,7 @@ const changeActiveTodo = (id: string) => {
 
 <style module>
 .container {
-  margin: 2.4rem 7.2rem;
+  margin: 2.4rem;
 }
 
 .title {

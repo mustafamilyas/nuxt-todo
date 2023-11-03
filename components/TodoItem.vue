@@ -20,9 +20,9 @@ const emit = defineEmits<{
   (e: "toggle", id: string): void;
 }>();
 
-function handleClick() {
+const handleClick = () => {
   emit("click", props.id);
-}
+};
 </script>
 
 <template>
@@ -38,7 +38,7 @@ function handleClick() {
       <span :class="$style.title">
         {{ title }}
       </span>
-      <span :class="$style.task"> Task </span>
+      <span :class="$style.type">Tasks</span>
     </label>
   </div>
 </template>
@@ -49,7 +49,7 @@ function handleClick() {
   box-shadow: 0rem 0.03rem 0.09rem rgba(0, 0, 0, 0.1),
     0rem 0.16rem 0.36rem rgba(0, 0, 0, 0.1);
   border-radius: 0.04rem;
-  padding: 0rem 1.06rem;
+  padding: 0.5rem 1rem;
   min-height: 5.02rem;
   display: flex;
   align-items: center;
@@ -59,6 +59,7 @@ function handleClick() {
   flex-wrap: wrap;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  gap: 0.8rem;
 }
 
 .container:hover {
@@ -67,5 +68,25 @@ function handleClick() {
 
 .container.active {
   background-color: #ecf6fd;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: #323130;
+  line-height: 2rem;
+}
+
+.type {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  color: #797775;
 }
 </style>
