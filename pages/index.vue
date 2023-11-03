@@ -1,14 +1,22 @@
 <script setup lang="ts">
 const activeTodoId = ref<string | null>(null);
 const currentDateString = dateToReadable(new Date());
-const dummyTodos = new Array(5).fill(null).map((_, i) => ({
-  id: i.toString(),
-  title: `Todo ${i + 1}`,
-  completed: false,
-}));
+
+const todoStore = useTodoListStore();
 
 const changeActiveTodo = (id: string) => {
   activeTodoId.value = id;
+};
+
+const updateToggle = ({
+  id,
+  completed,
+}: {
+  id: string;
+  completed: boolean;
+}) => {
+  todoStore.toggleTodo(id);
+  activeTodoId.value = null;
 };
 </script>
 
@@ -19,15 +27,26 @@ const changeActiveTodo = (id: string) => {
       <p :class="$style.date">{{ currentDateString }}</p>
     </div>
     <div :class="$style.todos">
-      <NewTodoInput />
+      <NewTodoInput @submit="todoStore.addTodo" />
       <TodoItem
-        v-for="todo in dummyTodos"
+        v-for="todo in todoStore.activeTodos"
         :key="todo.id"
         :id="todo.id"
         :title="todo.title"
         :completed="todo.completed"
         :active="todo.id === activeTodoId"
         @click="changeActiveTodo"
+        @toggle="updateToggle"
+      />
+      <TodoItem
+        v-for="todo in todoStore.completedTodos"
+        :key="todo.id"
+        :id="todo.id"
+        :title="todo.title"
+        :completed="todo.completed"
+        :active="todo.id === activeTodoId"
+        @click="changeActiveTodo"
+        @toggle="updateToggle"
       />
     </div>
   </main>

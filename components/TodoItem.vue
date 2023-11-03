@@ -17,24 +17,49 @@ const props = defineProps({
 
 const emit = defineEmits<{
   (e: "click", id: string): void;
-  (e: "toggle", id: string): void;
+  (
+    e: "toggle",
+    {
+      id,
+      completed,
+    }: {
+      id: string;
+      completed: boolean;
+    }
+  ): void;
 }>();
 
 const handleClick = () => {
   emit("click", props.id);
 };
+
+const handleToggle = (event: Event) => {
+  event.stopPropagation();
+  emit("toggle", {
+    id: props.id,
+    completed: !props.completed,
+  });
+};
 </script>
 
 <template>
   <div
-    :class="[$style.container, props.active && $style.active]"
+    :class="[
+      $style.container,
+      props.active && $style.active,
+      props.completed && $style.completed,
+    ]"
     @click="handleClick"
   >
     <div :class="$style.checkbox">
-      <Checkbox :id="id" :checked="completed" />
+      <Checkbox
+        :id="props.id"
+        :checked="props.completed"
+        @change="handleToggle"
+      />
     </div>
 
-    <label :class="$style.label" :for="id">
+    <label :class="$style.label" :for="props.id">
       <span :class="$style.title">
         {{ title }}
       </span>
@@ -84,6 +109,11 @@ const handleClick = () => {
   font-size: 1.4rem;
   color: #323130;
   line-height: 2rem;
+}
+
+.completed .title {
+  text-decoration: line-through;
+  color: #797775;
 }
 
 .type {

@@ -9,6 +9,7 @@ const isFocused = ref(false);
 const addTodo = (event: Event) => {
   event.preventDefault();
   emit("submit", newTodo.value);
+  newTodo.value = "";
 };
 
 const focusInput = () => {
