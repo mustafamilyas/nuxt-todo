@@ -9,8 +9,6 @@ const runtimeConfig = useRuntimeConfig();
 <style>
 html,
 body {
-  padding: 0;
-  margin: 0;
   font-family: "Lato", sans-serif;
 }
 
@@ -33,5 +31,7 @@ html {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 </style>
