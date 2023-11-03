@@ -49,8 +49,9 @@ const handleClick = () => {
   background-color: #fff;
   box-shadow: 0rem 0.03rem 0.09rem rgba(0, 0, 0, 0.1),
     0rem 0.16rem 0.36rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.04rem;
-  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  padding: 1.4rem;
+
   min-height: 5.02rem;
   display: flex;
   align-items: center;
@@ -92,8 +93,8 @@ const handleClick = () => {
 }
 
 .icon {
-  height: 2rem;
-  width: 2rem;
+  height: 2.4rem;
+  width: 2.4rem;
   color: #797775;
   cursor: not-allowed;
 }

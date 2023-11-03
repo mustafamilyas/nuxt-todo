@@ -53,6 +53,7 @@ const changeActiveTodo = (id: string) => {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.4rem;
+  gap: 0.8rem;
+  margin-top: 3.6rem;
 }
 </style>
