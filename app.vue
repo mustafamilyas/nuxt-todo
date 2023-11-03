@@ -12,6 +12,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+body {
+  background: #f3f2f1;
+}
+
 html {
   font-size: 62.5%;
   /* 1 rem = 10px; 10px/16px = 62.5% */
