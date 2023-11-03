@@ -31,7 +31,7 @@ const handleClick = () => {
     @click="handleClick"
   >
     <div :class="$style.checkbox">
-      <input type="checkbox" :id="id" :checked="completed" />
+      <Checkbox :id="id" :checked="completed" />
     </div>
 
     <label :class="$style.label" :for="id">
@@ -40,7 +40,7 @@ const handleClick = () => {
       </span>
       <span :class="$style.type">Tasks</span>
     </label>
-    <svgo-star />
+    <svgo-star :class="$style.icon" />
   </div>
 </template>
 
@@ -89,5 +89,12 @@ const handleClick = () => {
   font-size: 1.2rem;
   line-height: 1.6rem;
   color: #797775;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  color: #797775;
+  cursor: not-allowed;
 }
 </style>
