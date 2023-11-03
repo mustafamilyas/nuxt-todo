@@ -16,29 +16,12 @@ const props = defineProps({
 });
 
 const emit = defineEmits<{
-  (e: "click", id: string): void;
-  (
-    e: "toggle",
-    {
-      id,
-      completed,
-    }: {
-      id: string;
-      completed: boolean;
-    }
-  ): void;
+  (e: "toggle", id: string): void;
 }>();
-
-const handleClick = () => {
-  emit("click", props.id);
-};
 
 const handleToggle = (event: Event) => {
   event.stopPropagation();
-  emit("toggle", {
-    id: props.id,
-    completed: !props.completed,
-  });
+  emit("toggle", props.id);
 };
 </script>
 
@@ -49,22 +32,17 @@ const handleToggle = (event: Event) => {
       props.active && $style.active,
       props.completed && $style.completed,
     ]"
-    @click="handleClick"
   >
     <div :class="$style.checkbox">
-      <Checkbox
-        :id="props.id"
-        :checked="props.completed"
-        @change="handleToggle"
-      />
+      <Checkbox :checked="props.completed" @change="handleToggle" />
     </div>
 
-    <label :class="$style.label" :for="props.id">
+    <NuxtLink :class="$style.label" :to="`/todo/${props.id}`">
       <span :class="$style.title">
         {{ title }}
       </span>
       <span :class="$style.type">Tasks</span>
-    </label>
+    </NuxtLink>
     <svgo-star :class="$style.icon" />
   </div>
 </template>
@@ -103,6 +81,7 @@ const handleToggle = (event: Event) => {
   align-items: stretch;
   gap: 0.2rem;
   flex-grow: 1;
+  text-decoration: none;
 }
 
 .title {

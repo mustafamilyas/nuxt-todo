@@ -1,22 +1,11 @@
 <script setup lang="ts">
-const activeTodoId = ref<string | null>(null);
+const activeTodoId = null;
 const currentDateString = dateToReadable(new Date());
 
 const todoStore = useTodoListStore();
 
-const changeActiveTodo = (id: string) => {
-  activeTodoId.value = id;
-};
-
-const updateToggle = ({
-  id,
-  completed,
-}: {
-  id: string;
-  completed: boolean;
-}) => {
+const updateToggle = (id: string) => {
   todoStore.toggleTodo(id);
-  activeTodoId.value = null;
 };
 </script>
 
@@ -35,7 +24,6 @@ const updateToggle = ({
         :title="todo.title"
         :completed="todo.completed"
         :active="todo.id === activeTodoId"
-        @click="changeActiveTodo"
         @toggle="updateToggle"
       />
       <TodoItem
@@ -45,7 +33,6 @@ const updateToggle = ({
         :title="todo.title"
         :completed="todo.completed"
         :active="todo.id === activeTodoId"
-        @click="changeActiveTodo"
         @toggle="updateToggle"
       />
     </div>

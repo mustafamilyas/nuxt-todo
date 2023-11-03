@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.container">
+  <label :class="$style.container">
     <span :class="$style.checkbox">
       <input type="checkbox" v-bind="$attrs" />
       <svg>
@@ -15,7 +15,7 @@
         />
       </symbol>
     </svg>
-  </div>
+  </label>
 </template>
 
 <style module>
