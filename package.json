@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "test": "vitest",
     "json-server": "json-server --watch db.json --port 5000"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "nuxt": "^3.8.0",
     "nuxt-svgo": "^3.5.6",
     "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5",
     "vue-tsc": "^1.8.22"
