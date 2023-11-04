@@ -71,7 +71,7 @@ const blurInput = () => {
 }
 
 .container.active {
-  outline: 1px solid #2564cf;
+  outline: 1px solid var(--col-primary, #2564cf);
 }
 
 .actions {
@@ -106,7 +106,7 @@ const blurInput = () => {
 }
 
 .active .icon {
-  color: #2564cf;
+  color: var(--col-primary, #2564cf);
   cursor: not-allowed;
 }
 
@@ -123,7 +123,7 @@ const blurInput = () => {
 }
 
 .submit {
-  background: #2564cf;
+  background: var(--col-primary, #2564cf);
   color: #fff;
   border: none;
   border-radius: 0.4rem;
@@ -135,7 +135,7 @@ const blurInput = () => {
 }
 
 .submit:hover {
-  background: #1e54b7;
+  background: var(--col-primary-hover, #1e54b7);
 }
 
 .iconWrapper {
@@ -145,7 +145,7 @@ const blurInput = () => {
 }
 
 .actions .icon {
-  color: #797775;
+  color: var(--col-secondary, #797775);
   cursor: not-allowed;
 }
 

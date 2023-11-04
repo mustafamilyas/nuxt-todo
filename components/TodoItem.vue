@@ -73,11 +73,11 @@ const handleToggle = (event: Event) => {
 }
 
 .container:hover {
-  background-color: #f5f5f5;
+  background-color: var(--col-secondary-light, #f5f5f5);
 }
 
 .container.active {
-  background-color: #ecf6fd;
+  background-color: var(--col-primary-light, #ecf6fd);
 }
 
 .label {
@@ -98,19 +98,19 @@ const handleToggle = (event: Event) => {
 
 .completed .title {
   text-decoration: line-through;
-  color: #797775;
+  color: var(--col-secondary, #797775);
 }
 
 .type {
   font-size: 1.2rem;
   line-height: 1.6rem;
-  color: #797775;
+  color: var(--col-secondary, #797775);
 }
 
 .icon {
   height: 2.4rem;
   width: 2.4rem;
-  color: #797775;
+  color: var(--col-secondary, #797775);
   cursor: not-allowed;
 }
 </style>

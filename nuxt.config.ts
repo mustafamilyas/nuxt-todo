@@ -20,4 +20,5 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
+  css: ["~/assets/styles/global.css"],
 });
