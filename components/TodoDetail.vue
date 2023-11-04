@@ -170,8 +170,8 @@ const handleDelete = (event: Event) => {
 
 .note textarea {
   border: none;
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-size: 1.4rem;
+  font-weight: 300;
   font-family: inherit;
   color: #4a4a4a;
   resize: none;
