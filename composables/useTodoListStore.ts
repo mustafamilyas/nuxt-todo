@@ -28,18 +28,18 @@ const useTodoListStore = defineStore("todoList", () => {
       completed: false,
       createdAt: new Date().toISOString(),
     };
-    todos.value.push(newTodo);
+    todos.value?.push(newTodo);
     return newTodo;
   };
 
   const removeTodo = (id: string) => {
-    const removedTodo = todos.value.find((todo) => todo.id === id);
-    todos.value = todos.value.filter((todo) => todo.id !== id);
+    const removedTodo = todos.value?.find((todo) => todo.id === id);
+    todos.value = todos.value?.filter((todo) => todo.id !== id);
     return removedTodo;
   };
 
   const toggleTodo = (id: string) => {
-    todos.value = todos.value.map((todo) => {
+    todos.value = todos.value?.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
@@ -51,7 +51,7 @@ const useTodoListStore = defineStore("todoList", () => {
   };
 
   const updateTodo = (todo: Todo) => {
-    todos.value = todos.value.map((t) => {
+    todos.value = todos.value?.map((t) => {
       if (t.id === todo.id) {
         return todo;
       }
@@ -64,7 +64,7 @@ const useTodoListStore = defineStore("todoList", () => {
   };
 
   const syncTodoId = (oldId: string, newId: string) => {
-    todos.value = todos.value.map((todo) => {
+    todos.value = todos.value?.map((todo) => {
       if (todo.id === oldId) {
         return {
           ...todo,

@@ -179,12 +179,13 @@ const handleDelete = (event: Event) => {
   flex: 1;
 }
 
-.title span {
+.title > span {
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
   color: #4a4a4a;
   flex: 1;
+  padding: 1.4rem;
 }
 
 .title input::placeholder {

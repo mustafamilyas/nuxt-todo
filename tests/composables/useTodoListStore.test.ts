@@ -4,6 +4,7 @@ import { setActivePinia, createPinia } from "pinia";
 describe("Counter Store", () => {
   setActivePinia(createPinia());
   const todoListStore = useTodoListStore();
+
   it("initial", () => {
     expect(todoListStore.todos.length).toBe(0);
     expect(todoListStore.activeTodos.length).toBe(0);
@@ -44,6 +45,7 @@ describe("Counter Store", () => {
         createdAt: new Date().toISOString(),
       },
     ]);
+
     expect(todoListStore.todos.length).toBe(1);
     expect(todoListStore.activeTodos.length).toBe(1);
     expect(todoListStore.completedTodos.length).toBe(0);

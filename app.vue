@@ -1,5 +1,8 @@
 <script setup lang="ts">
-const runtimeConfig = useRuntimeConfig();
+useHead({
+  title: "Todo app - Nuxt",
+  meta: [{ name: "description", content: "Todo app made with Nuxt" }],
+});
 </script>
 
 <template>

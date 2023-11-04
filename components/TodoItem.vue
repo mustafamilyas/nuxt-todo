@@ -68,7 +68,6 @@ const handleToggle = (event: Event) => {
   min-height: 5.02rem;
   word-wrap: break-word;
   word-break: break-word;
-  flex-wrap: wrap;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   gap: 0.8rem;
@@ -114,5 +113,6 @@ const handleToggle = (event: Event) => {
   width: 2.4rem;
   color: var(--col-secondary, #797775);
   cursor: not-allowed;
+  flex-shrink: 0;
 }
 </style>
