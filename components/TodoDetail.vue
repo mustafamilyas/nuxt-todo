@@ -90,6 +90,7 @@ const handleDelete = (event: Event) => {
       <button :class="$style.iconWrapper" @click="triggerClose">
         <SvgoClose :class="$style.icon" height="24" width="24" />
       </button>
+      <span>{{ dateToReadableFull(new Date(todo?.createdAt || "")) }}</span>
       <button :class="$style.iconWrapper" @click="handleDelete">
         <SvgoDelete :class="$style.icon" height="24" width="24" />
       </button>

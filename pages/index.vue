@@ -3,10 +3,16 @@ import { TodoQuery } from "~/constants/query";
 
 const route = useRoute();
 const router = useRouter();
+const todoStore = useTodoListStore();
+
+const { refresh } = await useFetch("/api/todos", {
+  onResponse({ request, response, options }) {
+    // Process the response data
+    todoStore.syncTodos(response._data);
+  },
+});
 
 const currentDateString = dateToReadable(new Date());
-
-const todoStore = useTodoListStore();
 
 const activeTodoId = computed(
   () => route.query[TodoQuery.currentQuestion] as string
@@ -27,6 +33,23 @@ const removeActiveQuery = () => {
   const query = { ...route.query };
   delete query[TodoQuery.currentQuestion];
   router.replace({ query });
+  refresh();
+};
+
+const addTodo = async (title: string) => {
+  const newTodo = todoStore.addTodo(title);
+  try {
+    const response = await $fetch("/api/todos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTodo),
+    });
+    todoStore.syncTodoId(newTodo.id, response.id);
+  } catch (error) {
+    todoStore.removeTodo(newTodo.id);
+  }
 };
 </script>
 
@@ -38,7 +61,7 @@ const removeActiveQuery = () => {
         <p :class="$style.date">{{ currentDateString }}</p>
       </div>
       <div :class="$style.todos">
-        <NewTodoInput @submit="todoStore.addTodo" />
+        <NewTodoInput @submit="addTodo" />
         <TodoItem
           v-for="todo in todoStore.activeTodos"
           :key="todo.id"

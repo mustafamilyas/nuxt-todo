@@ -3,17 +3,11 @@ export interface Todo {
   title: string;
   description: string;
   completed: boolean;
+  createdAt?: string;
 }
 
 const useTodoListStore = defineStore("todoList", () => {
-  const todos = ref<Todo[]>([
-    {
-      id: "0",
-      title: "Learn Vue 3",
-      description: "Learn Vue 3 and the composition API",
-      completed: false,
-    },
-  ]);
+  const todos = ref<Todo[]>([]);
   const counter = ref(1);
 
   const activeTodos = computed(() => {
@@ -25,12 +19,15 @@ const useTodoListStore = defineStore("todoList", () => {
   });
 
   const addTodo = (title: string) => {
-    todos.value.push({
+    const newTodo = {
       id: String(counter.value++),
       title,
       description: "",
       completed: false,
-    });
+      createdAt: new Date().toISOString(),
+    };
+    todos.value.push(newTodo);
+    return newTodo;
   };
 
   const removeTodo = (id: string) => {
@@ -58,6 +55,22 @@ const useTodoListStore = defineStore("todoList", () => {
     });
   };
 
+  const syncTodos = (newTodos: Todo[]) => {
+    todos.value = newTodos;
+  };
+
+  const syncTodoId = (oldId: string, newId: string) => {
+    todos.value = todos.value.map((todo) => {
+      if (todo.id === oldId) {
+        return {
+          ...todo,
+          id: newId,
+        };
+      }
+      return todo;
+    });
+  };
+
   return {
     todos,
     activeTodos,
@@ -67,6 +80,8 @@ const useTodoListStore = defineStore("todoList", () => {
     removeTodo,
     toggleTodo,
     updateTodo,
+    syncTodos,
+    syncTodoId,
   };
 });
 
