@@ -57,10 +57,10 @@ const handleToggle = (event: Event) => {
   border-radius: 0.4rem;
   padding: 0 1.4rem;
 
-  min-height: 5.02rem;
   display: flex;
   align-items: center;
   position: relative;
+  min-height: 5.02rem;
   word-wrap: break-word;
   word-break: break-word;
   flex-wrap: wrap;

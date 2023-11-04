@@ -2,6 +2,7 @@
 import { TodoQuery } from "~/constants/query";
 
 const route = useRoute();
+const router = useRouter();
 
 const currentDateString = dateToReadable(new Date());
 
@@ -16,6 +17,16 @@ const activeTodo = computed(() => {
 
 const updateToggle = (id: string) => {
   todoStore.toggleTodo(id);
+};
+
+const updateTodo = (todo: Todo) => {
+  todoStore.updateTodo(todo);
+};
+
+const removeActiveQuery = () => {
+  const query = { ...route.query };
+  delete query[TodoQuery.currentQuestion];
+  router.replace({ query });
 };
 </script>
 
@@ -48,22 +59,28 @@ const updateToggle = (id: string) => {
         />
       </div>
     </div>
-    <TodoDetail v-if="activeTodo" :todo="activeTodo" />
+    <TodoDetail
+      v-if="activeTodo"
+      :todo="activeTodo"
+      @update="updateTodo"
+      @close="removeActiveQuery"
+      @delete="todoStore.removeTodo"
+    />
   </main>
 </template>
 
 <style module>
 .container {
-  margin: 2.4rem;
   position: relative;
   display: flex;
-  gap: 2.4rem;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
 }
 
 .content {
   flex: 1;
+  padding: 2.4rem;
 }
 
 .title {

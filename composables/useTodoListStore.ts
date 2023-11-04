@@ -49,6 +49,15 @@ const useTodoListStore = defineStore("todoList", () => {
     });
   };
 
+  const updateTodo = (todo: Todo) => {
+    todos.value = todos.value.map((t) => {
+      if (t.id === todo.id) {
+        return todo;
+      }
+      return t;
+    });
+  };
+
   return {
     todos,
     activeTodos,
@@ -57,6 +66,7 @@ const useTodoListStore = defineStore("todoList", () => {
     addTodo,
     removeTodo,
     toggleTodo,
+    updateTodo,
   };
 });
 
