@@ -63,6 +63,7 @@ const handleDelete = (event: Event) => {
 </script>
 
 <template>
+  <div :class="$style.backdrop" @click="triggerClose"></div>
   <div :class="$style.container">
     <div :class="$style.mainForm">
       <div :class="[$style.item, $style.title]">
@@ -90,7 +91,9 @@ const handleDelete = (event: Event) => {
       <button :class="$style.iconWrapper" @click="triggerClose">
         <SvgoClose :class="$style.icon" height="24" width="24" />
       </button>
-      <span>{{ dateToReadableFull(new Date(todo?.createdAt || "")) }}</span>
+      <span :class="$style.date">{{
+        dateToReadableFull(new Date(todo?.createdAt || ""))
+      }}</span>
       <button :class="$style.iconWrapper" @click="handleDelete">
         <SvgoDelete :class="$style.icon" height="24" width="24" />
       </button>
@@ -99,15 +102,49 @@ const handleDelete = (event: Event) => {
 </template>
 
 <style module>
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .backdrop {
+    display: block;
+  }
+}
 .container {
   background: #f3f2f1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  width: 36rem;
+  width: 100%;
+  max-width: 36rem;
   box-shadow: 0rem 0.12rem 0.36rem rgba(0, 0, 0, 0.1),
     0rem 0.64rem 1.44rem rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    width: 100%;
+    max-width: unset;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 200;
+  }
 }
 
 .mainForm {
@@ -201,5 +238,12 @@ const handleDelete = (event: Event) => {
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.date {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.8rem;
+  color: #4a4a4a;
 }
 </style>
