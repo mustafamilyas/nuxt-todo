@@ -51,6 +51,18 @@ const addTodo = async (title: string) => {
     todoStore.removeTodo(newTodo.id);
   }
 };
+
+const removeTodo = async (id: string) => {
+  const removedTodo = todoStore.removeTodo(id);
+  try {
+    const response = await $fetch(`/api/todos/${id}`, {
+      method: "DELETE",
+    });
+  } catch (error) {
+    if (!removedTodo) return;
+    todoStore.addTodoComplete(removedTodo);
+  }
+};
 </script>
 
 <template>
@@ -87,7 +99,7 @@ const addTodo = async (title: string) => {
       :todo="activeTodo"
       @update="updateTodo"
       @close="removeActiveQuery"
-      @delete="todoStore.removeTodo"
+      @delete="removeTodo"
     />
   </main>
 </template>

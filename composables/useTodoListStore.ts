@@ -30,8 +30,12 @@ const useTodoListStore = defineStore("todoList", () => {
     return newTodo;
   };
 
+  const addTodoComplete = (todo: Todo) => {};
+
   const removeTodo = (id: string) => {
+    const removedTodo = todos.value.find((todo) => todo.id === id);
     todos.value = todos.value.filter((todo) => todo.id !== id);
+    return removedTodo;
   };
 
   const toggleTodo = (id: string) => {
@@ -82,6 +86,7 @@ const useTodoListStore = defineStore("todoList", () => {
     updateTodo,
     syncTodos,
     syncTodoId,
+    addTodoComplete,
   };
 });
 
