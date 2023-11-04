@@ -1,10 +1,15 @@
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# TODO App Nuxt
 
 ## Setup
 
-Make sure to install the dependencies:
+1. In this project, we use yarn as our package manager. If you don't mind to not have the same dependencies as the project, you can use npm or pnpm and skip this step.
+
+```bash
+# npm
+npm install -g yarn
+```
+
+2. Make sure to install the dependencies.
 
 ```bash
 # npm
@@ -20,9 +25,15 @@ yarn install
 bun install
 ```
 
+3. Copy the `.env.example` file to `.env` and fill in the variables.
+
+```bash
+cp .env.example .env
+```
+
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+1. Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
@@ -36,6 +47,27 @@ yarn dev
 
 # bun
 bun run dev
+```
+
+2. If you want to use mock server as API service, you can start the mock server on `http://localhost:9999` and don't forget to change the `NUXT_PUBLIC_API_BE` in `.env` file to `http://localhost:9999`.
+
+```
+// .env
+NUXT_PUBLIC_API_BE=http://localhost:9999
+```
+
+```bash
+# npm
+npm run json-server
+
+# pnpm
+pnpm run json-server
+
+# yarn
+yarn json-server
+
+# bun
+bun run json-server
 ```
 
 ## Production
