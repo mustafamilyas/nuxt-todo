@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "json-server": "json-server --watch db.json --port 5000"
   },
   "devDependencies": {

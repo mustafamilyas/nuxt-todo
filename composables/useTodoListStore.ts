@@ -11,10 +11,12 @@ const useTodoListStore = defineStore("todoList", () => {
   const counter = ref(1);
 
   const activeTodos = computed(() => {
+    if (!todos.value) return [];
     return todos.value.filter((todo) => !todo.completed);
   });
 
   const completedTodos = computed(() => {
+    if (!todos.value) return [];
     return todos.value.filter((todo) => todo.completed);
   });
 
@@ -29,8 +31,6 @@ const useTodoListStore = defineStore("todoList", () => {
     todos.value.push(newTodo);
     return newTodo;
   };
-
-  const addTodoComplete = (todo: Todo) => {};
 
   const removeTodo = (id: string) => {
     const removedTodo = todos.value.find((todo) => todo.id === id);
@@ -86,7 +86,6 @@ const useTodoListStore = defineStore("todoList", () => {
     updateTodo,
     syncTodos,
     syncTodoId,
-    addTodoComplete,
   };
 });
 
