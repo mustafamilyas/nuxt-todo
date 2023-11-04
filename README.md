@@ -1,5 +1,7 @@
 # TODO App Nuxt
 
+A todo list app built with Nuxt.js.
+
 ## Setup
 
 1. In this project, we use yarn as our package manager. If you don't mind to not have the same dependencies as the project, you can use npm or pnpm and skip this step.
@@ -49,11 +51,11 @@ yarn dev
 bun run dev
 ```
 
-2. If you want to use mock server as API service, you can start the mock server on `http://localhost:9999` and don't forget to change the `NUXT_PUBLIC_API_BE` in `.env` file to `http://localhost:9999`.
+2. If you want to use mock server as API service, you can start the mock server on `http://localhost:5000` and don't forget to change the `NUXT_API_BE` in `.env` file to `http://localhost:5000`.
 
 ```
 // .env
-NUXT_PUBLIC_API_BE=http://localhost:9999
+NUXT_API_BE=http://localhost:5000
 ```
 
 ```bash
