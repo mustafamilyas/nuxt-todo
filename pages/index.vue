@@ -129,9 +129,17 @@ const removeTodo = async (id: string) => {
 
 .content {
   flex: 1;
-  padding: 2.4rem;
+  padding: 0 2.4rem 2.4rem 2.4rem;
+  overflow: auto;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f3f2f1;
+  padding: 2.4rem 0 3.6rem 0;
+}
 .title {
   font-weight: 600;
   margin-bottom: 0.4rem;
@@ -147,7 +155,7 @@ const removeTodo = async (id: string) => {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow: auto;
   gap: 0.8rem;
-  margin-top: 3.6rem;
 }
 </style>
