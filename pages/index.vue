@@ -157,5 +157,6 @@ const removeTodo = async (id: string) => {
   align-items: stretch;
   overflow: auto;
   gap: 0.8rem;
+  padding: 0.2rem;
 }
 </style>

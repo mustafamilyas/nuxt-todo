@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Todo } from "~/composables/useTodoListStore";
-import { isTodo } from "~/utils/is-todo";
+
 const props = defineProps({
   className: {
     type: String,

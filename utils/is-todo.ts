@@ -1,4 +1,4 @@
-export function isTodo(object: any): object is Todo {
+export default function isTodo(object: any): object is Todo {
   return (
     typeof object === "object" &&
     object !== null &&
