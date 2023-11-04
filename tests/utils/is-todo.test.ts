@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import isTodo from "./is-todo";
+import isTodo from "~/utils/is-todo";
 
 describe("isTodo", () => {
   it.concurrent.each([

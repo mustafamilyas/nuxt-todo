@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import dateToReadableFull from "./date-to-readable-full";
+import dateToReadableFull from "~/utils/date-to-readable-full";
 
 describe("dateToReadableFull", () => {
   it.concurrent.each([
