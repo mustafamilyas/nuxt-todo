@@ -35,10 +35,7 @@ const handleToggle = (event: Event) => {
       props.completed && $style.completed,
     ]"
   >
-    <div :class="$style.checkbox">
-      <Checkbox :checked="props.completed" @change="handleToggle" />
-    </div>
-
+    <Checkbox :checked="props.completed" @change="handleToggle" />
     <NuxtLink
       :class="$style.label"
       :to="`?${TodoQuery.currentQuestion}=${props.id}`"
@@ -48,7 +45,7 @@ const handleToggle = (event: Event) => {
       </span>
       <span :class="$style.type">Tasks</span>
     </NuxtLink>
-    <svgo-star :class="$style.icon" />
+    <svgo-star :class="$style.icon" height="24" width="24" />
   </div>
 </template>
 

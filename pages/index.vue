@@ -2,11 +2,17 @@
 import { TodoQuery } from "~/constants/query";
 
 const route = useRoute();
-const activeTodoId = route.query[TodoQuery.currentQuestion] as string;
 
 const currentDateString = dateToReadable(new Date());
 
 const todoStore = useTodoListStore();
+
+const activeTodoId = computed(
+  () => route.query[TodoQuery.currentQuestion] as string
+);
+const activeTodo = computed(() => {
+  return todoStore.todos.find((todo) => todo.id === activeTodoId.value);
+});
 
 const updateToggle = (id: string) => {
   todoStore.toggleTodo(id);
@@ -15,11 +21,11 @@ const updateToggle = (id: string) => {
 
 <template>
   <main :class="$style.container">
-    <div :class="$style.header">
-      <h1 :class="$style.title">My Task</h1>
-      <p :class="$style.date">{{ currentDateString }}</p>
-    </div>
     <div :class="$style.content">
+      <div :class="$style.header">
+        <h1 :class="$style.title">My Task</h1>
+        <p :class="$style.date">{{ currentDateString }}</p>
+      </div>
       <div :class="$style.todos">
         <NewTodoInput @submit="todoStore.addTodo" />
         <TodoItem
@@ -41,14 +47,23 @@ const updateToggle = (id: string) => {
           @toggle="updateToggle"
         />
       </div>
-      <TodoDetail />
     </div>
+    <TodoDetail v-if="activeTodo" :todo="activeTodo" />
   </main>
 </template>
 
 <style module>
 .container {
   margin: 2.4rem;
+  position: relative;
+  display: flex;
+  gap: 2.4rem;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
 }
 
 .title {

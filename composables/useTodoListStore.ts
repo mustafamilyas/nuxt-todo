@@ -1,4 +1,4 @@
-interface Todo {
+export interface Todo {
   id: string;
   title: string;
   description: string;
@@ -6,8 +6,15 @@ interface Todo {
 }
 
 const useTodoListStore = defineStore("todoList", () => {
-  const todos = ref<Todo[]>([]);
-  const counter = ref(0);
+  const todos = ref<Todo[]>([
+    {
+      id: "0",
+      title: "Learn Vue 3",
+      description: "Learn Vue 3 and the composition API",
+      completed: false,
+    },
+  ]);
+  const counter = ref(1);
 
   const activeTodos = computed(() => {
     return todos.value.filter((todo) => !todo.completed);
