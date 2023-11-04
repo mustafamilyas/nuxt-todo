@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { TodoQuery } from "~/constants/query";
+
 const props = defineProps({
   id: {
     type: String,
@@ -37,7 +39,10 @@ const handleToggle = (event: Event) => {
       <Checkbox :checked="props.completed" @change="handleToggle" />
     </div>
 
-    <NuxtLink :class="$style.label" :to="`/todo/${props.id}`">
+    <NuxtLink
+      :class="$style.label"
+      :to="`?${TodoQuery.currentQuestion}=${props.id}`"
+    >
       <span :class="$style.title">
         {{ title }}
       </span>
@@ -53,7 +58,7 @@ const handleToggle = (event: Event) => {
   box-shadow: 0rem 0.03rem 0.09rem rgba(0, 0, 0, 0.1),
     0rem 0.16rem 0.36rem rgba(0, 0, 0, 0.1);
   border-radius: 0.4rem;
-  padding: 1.4rem;
+  padding: 0 1.4rem;
 
   min-height: 5.02rem;
   display: flex;
@@ -79,6 +84,7 @@ const handleToggle = (event: Event) => {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: 1.4rem 0;
   gap: 0.2rem;
   flex-grow: 1;
   text-decoration: none;

@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const activeTodoId = null;
+import { TodoQuery } from "~/constants/query";
+
+const route = useRoute();
+const activeTodoId = route.query[TodoQuery.currentQuestion] as string;
+
 const currentDateString = dateToReadable(new Date());
 
 const todoStore = useTodoListStore();
@@ -15,26 +19,29 @@ const updateToggle = (id: string) => {
       <h1 :class="$style.title">My Task</h1>
       <p :class="$style.date">{{ currentDateString }}</p>
     </div>
-    <div :class="$style.todos">
-      <NewTodoInput @submit="todoStore.addTodo" />
-      <TodoItem
-        v-for="todo in todoStore.activeTodos"
-        :key="todo.id"
-        :id="todo.id"
-        :title="todo.title"
-        :completed="todo.completed"
-        :active="todo.id === activeTodoId"
-        @toggle="updateToggle"
-      />
-      <TodoItem
-        v-for="todo in todoStore.completedTodos"
-        :key="todo.id"
-        :id="todo.id"
-        :title="todo.title"
-        :completed="todo.completed"
-        :active="todo.id === activeTodoId"
-        @toggle="updateToggle"
-      />
+    <div :class="$style.content">
+      <div :class="$style.todos">
+        <NewTodoInput @submit="todoStore.addTodo" />
+        <TodoItem
+          v-for="todo in todoStore.activeTodos"
+          :key="todo.id"
+          :id="todo.id"
+          :title="todo.title"
+          :completed="todo.completed"
+          :active="todo.id === activeTodoId"
+          @toggle="updateToggle"
+        />
+        <TodoItem
+          v-for="todo in todoStore.completedTodos"
+          :key="todo.id"
+          :id="todo.id"
+          :title="todo.title"
+          :completed="todo.completed"
+          :active="todo.id === activeTodoId"
+          @toggle="updateToggle"
+        />
+      </div>
+      <TodoDetail />
     </div>
   </main>
 </template>
