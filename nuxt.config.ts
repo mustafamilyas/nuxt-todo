@@ -12,9 +12,7 @@ export default defineNuxtConfig({
     "nuxt-svgo",
   ],
   runtimeConfig: {
-    public: {
-      apiBe: "",
-    },
+    apiBe: "",
   },
   typescript: {
     strict: true,
