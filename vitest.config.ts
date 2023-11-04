@@ -1,8 +1,7 @@
-import { defineConfig } from "vitest/dist/config";
+import { defineVitestConfig } from "nuxt-vitest/config";
 
-export default defineConfig({
+export default defineVitestConfig({
   test: {
     globalSetup: "./vitest.global-setup.ts",
-    // ...
   },
 });

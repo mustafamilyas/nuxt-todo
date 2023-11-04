@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       },
     ],
     "nuxt-svgo",
+    "nuxt-vitest",
   ],
   runtimeConfig: {
     apiBe: "",

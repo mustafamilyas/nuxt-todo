@@ -35,12 +35,17 @@ const handleToggle = (event: Event) => {
       props.completed && $style.completed,
     ]"
   >
-    <Checkbox :checked="props.completed" @change="handleToggle" />
+    <Checkbox
+      :checked="props.completed"
+      @change="handleToggle"
+      data-test="todo-item-checkbox"
+    />
     <NuxtLink
       :class="$style.label"
       :to="`?${TodoQuery.currentQuestion}=${props.id}`"
+      data-test="todo-item-link"
     >
-      <span :class="$style.title">
+      <span :class="$style.title" data-test="todo-item-title">
         {{ title }}
       </span>
       <span :class="$style.type">Tasks</span>
