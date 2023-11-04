@@ -25,8 +25,22 @@ const updateToggle = (id: string) => {
   todoStore.toggleTodo(id);
 };
 
-const updateTodo = (todo: Todo) => {
-  todoStore.updateTodo(todo);
+const updateTodo = async ({ id, ...updateBody }: Todo) => {
+  todoStore.updateTodo({
+    ...updateBody,
+    id: id,
+  });
+  try {
+    await $fetch(`/api/todos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateBody),
+    });
+  } catch (error) {
+    console.error("Error updating todo", error);
+  }
 };
 
 const removeActiveQuery = () => {
