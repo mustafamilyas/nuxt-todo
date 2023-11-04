@@ -1,5 +1,6 @@
-import { it, expect, describe, beforeEach } from "vitest";
+import { it, expect, describe } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
+import useTodoListStore from "~/composables/useTodoListStore";
 
 describe("Counter Store", () => {
   setActivePinia(createPinia());

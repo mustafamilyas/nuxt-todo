@@ -1,13 +1,29 @@
-import { defineVitestConfig } from "nuxt-vitest/config";
+import * as path from "path";
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vitest/config";
+import Components from "unplugin-vue-components/vite";
+import AutoImport from "unplugin-auto-import/vite";
 
-export default defineVitestConfig({
+const r = (p: string) => path.resolve(__dirname, p);
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    Components({ dirs: ["./components"] }),
+    AutoImport({
+      imports: ["vue", "vitest", "pinia"],
+      dirs: ["./components", "./composables"],
+      dts: true,
+    }),
+  ],
   test: {
-    globalSetup: "./vitest.global-setup.ts",
     globals: true,
-    css: {
-      modules: {
-        classNameStrategy: "non-scoped",
-      },
+    environment: "jsdom",
+    globalSetup: "./vitest.global-setup.ts",
+  },
+  resolve: {
+    alias: {
+      "~": r("."),
     },
   },
 });

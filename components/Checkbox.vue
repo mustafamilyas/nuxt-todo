@@ -1,3 +1,9 @@
+<script setup lang="ts">
+defineOptions({
+  inheritAttrs: false,
+});
+</script>
+
 <template>
   <label :class="$style.container">
     <span :class="$style.checkbox">
